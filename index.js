@@ -10,11 +10,13 @@ app.get("/", (req, res) => {
     <script>
       window.now = () => {
         requestAnimationFrame(() => {
-          fetch("/ping"); 
+          requestAnimationFrame(() => {
+            fetch("/ping"); 
 
-          const img = document.createElement('img');
-          img.src = "/bug.png";
-          document.body.appendChild(img)
+            const img = document.createElement('img');
+            img.src = "/bug.png";
+            document.body.appendChild(img)
+          });
         });
       }
     </script>
