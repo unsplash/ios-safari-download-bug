@@ -9,11 +9,13 @@ app.get("/", (req, res) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
       window.now = () => {
-        fetch("/ping");
+        setTimeout(() => {
+          fetch("/ping");
 
-        const img = document.createElement('img');
-        img.src = "/bug.png";
-        document.body.appendChild(img)
+          const img = document.createElement('img');
+          img.src = "/bug.png";
+          document.body.appendChild(img)
+        }, 10)
       }
     </script>
     <a href="/file" download onclick="window.now()">download</a>
