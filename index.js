@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/file", (req, res) => {
+  res.set("content-type", "text/plain");
   res.send("file");
 });
 
