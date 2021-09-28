@@ -52,3 +52,17 @@ If we switch from a timeout to listening for the `window` `focus` event instead,
 Fortunately, it seems that the problem doesn't occur if we listen for the `window` `focus` event _and then_ the next animation frame. See branch `workaround`.
 
 [bug report]: https://bugs.webkit.org/show_bug.cgi?id=220621
+
+### Update: iOS 15
+
+When iOS 15 was released, we discovered new issues with the workaround described above.
+
+https://www.loom.com/share/e7a28382ac3248cf8aaf1a8cf9cbb297
+
+*If the user has not scrolled the page*, the `focus` event **is** fired on the `window` when the prompt is closed, as before.
+
+*If the user has scrolled the page*, the `focus` event **is not** fired on the `window` when the prompt is closed.
+
+For a reduced test case (applied on top of `workaround` branch), see branch `workaround-ios-15-bug`.
+
+Fortunately, the `resize` event is fired instead, so we extend our workaround to listen for that as well as `focus`. See branch `workaround-ios-15-bug-fix`.
