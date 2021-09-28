@@ -8,17 +8,29 @@ app.get("/", (req, res) => {
     `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
+      const request = () => {
+        fetch("/ping");
+
+        const img = document.createElement('img');
+        img.src = "/bug.png";
+        document.body.appendChild(img)
+      };
+
       window.now = () => {
         window.onfocus = () => {
           requestAnimationFrame(() => {
-            fetch("/ping");
-
-            const img = document.createElement('img');
-            img.src = "/bug.png";
-            document.body.appendChild(img)
+            request();
           })
 
           window.onfocus = undefined;
+        }
+
+        window.onresize = () => {
+          requestAnimationFrame(() => {
+            request();
+          })
+
+          window.onresize = undefined;
         }
       }
     </script>
