@@ -22,7 +22,9 @@ app.get("/", (req, res) => {
         }
       }
     </script>
+    <div style="background: black; height: 400px;"></div>
     <a href="/file" download onclick="window.now()">download</a>
+    <div style="background: black; height: 400px;"></div>
   `
   );
 });
